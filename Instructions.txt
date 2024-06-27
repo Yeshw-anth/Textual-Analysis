@@ -1,0 +1,114 @@
+*steps I used to approach the solution :
+
+        1. By observing the objective I came to a conclusion that I have to extract the data and perform analysis on the extracted data to obtain the required parameters.
+
+        2. By utilizing the information in text analysis document, I wrote the code to calculate necessary parameters to obtain precise output.
+
+        3. checking the code frequently to avoid any mistakes and improving the code effeciency in the process.
+
+        4. After creating necessary functions for each step of the program for repetitive calculations, I created a excel sheet for output obtained.
+
+
+*steps I used to write the code :
+
+
+    > Importing Libraries:
+
+        pandas for working with data in tabular format.
+
+        requests for making HTTP requests to fetch web page content.
+
+        BeautifulSoup from bs4 for HTML parsing.
+
+        nltk for natural language processing tasks.
+
+        re for regular expressions.
+
+
+    > Helper  Functions:
+
+        read_words_from_file(file_path): Reads words from a text file and returns a set of words.
+
+        read_stop_words(stop_word_files): Reads stop words from multiple files and returns a set of stop words.
+
+        syllable_count(word): Calculates the syllable count for a given word.
+
+        clean_text(text): Cleans the text by removing newline characters, special characters, and non-breaking spaces.
+
+
+    > Main Functions:
+
+        extract_title_and_content(url): Fetches the HTML content of a URL, extracts the title and content, concatenates them into a single string, and cleans the text.
+
+        calculate_parameters(cleaned_text, positive_words, negative_words, stop_words): Calculates various text analysis parameters based on positive and negative words, and stop words.
+
+
+    > Load Words and Data:
+
+        Loads positive words, negative words, and stop words from text files.
+
+        Loads data from an Excel file (Input.xlsx) into a pandas DataFrame (df_input).
+
+
+    > Define Parameter Columns:
+
+        Creates a list of column names for the calculated parameters.
+
+
+    > Calculate Parameters for Each URL:
+
+        Iterates through each row in the DataFrame, extracts the URL, and applies the extract_title_and_content function.
+
+        If data is successfully extracted, it calculates parameters using calculate_parameters and updates the DataFrame.
+
+        If data cannot be extracted (returns None), it drops the corresponding row from the DataFrame.
+
+
+    > Save Output:
+
+        Saves the updated DataFrame to a new Excel file (Output Data Structure.xlsx)
+
+
+    > Modifications:
+
+        Introduced a check for None in the calculate_parameters function to handle cases where data extraction fails.
+
+        Skips calculation and drops the row if data is not extracted from the URL.
+
+        rows with url_id 'blackassign0036' and 'blackassign0049' were removed because the websites were not working.
+
+
+*To run the above Python script (.py file), you can follow these steps:
+
+        >Install Required Packages:
+
+        Make sure you have the required packages installed. You can install them using the following command in your terminal or command prompt:
+            
+            >>pip install pandas requests beautifulsoup4 nltk
+
+       
+        >Download the NLTK Data:
+
+        The script uses NLTK for tokenization. You need to download the NLTK data. Add the following lines at the beginning of your script:
+
+            >>import nltk
+            >>nltk.download('punkt')
+
+
+        >Run the Script:
+
+        Open a terminal or command prompt and navigate to the directory where you saved your script. Run the script using the following command:
+
+            >>python text_analysis_script.py
+
+
+        >Check Output:
+
+        After running the script, check the output files specified in the script. In this case, it saves the results in an Excel file named Output Data Structure.xlsx.
+
+
+
+
+
+
+
